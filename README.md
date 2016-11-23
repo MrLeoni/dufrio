@@ -28,7 +28,7 @@ Its a theme for __content__ administration the capabillity for change __layout__
 
 ## Versions:
 
-#### 2.0.0 - 02/09/2016
+#### 2.1.0 - 02/09/2016
 * Theme updated
 
 <br>

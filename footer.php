@@ -8,6 +8,11 @@
  *
  * @package Dufrio
  */
+ 
+ // Args to display Archives link
+ $argsMonthly = array(
+    "show_post_count"   => 1
+ );
 
 ?>
 
@@ -24,12 +29,7 @@
           </div>
           <div class="footer-about-info">
             <h3><img src="<?php bloginfo( "stylesheet_directory" ); ?>/assets/img/logo/logo-dufrio.svg" alt="Logo Dufrio">Blog</h3>
-            
-            <!-- EDIT -->
-            <!-- Deixar o texto sempre entre as tags <p></p>. Exemplo: <p>Texto vai aqui...</p> -->
-            <p>Quer ficar por dentro das novidades, curiosidades e dicas sobre refrigeração e ar condicionado? No Blog da Dufrio temos um conteúdo rico e atualizado, especialmente preparado para você.</p>
-            <!-- EDIT END -->
-            
+            <?php get_sidebar("footer"); ?>
           </div>
           <div class="footer-social-links">
             <div class="row">
@@ -45,19 +45,10 @@
             <h2>Arquivos</h2>
             <hr class="header-line">
           </div>
-          <div class="row">
-            <div class="footer-archives-info col-sm-4">
-              <ul>
-                <?php
-                  $argsMonthly = array(
-                    
-                      "show_post_count"   => 1
-                    
-                    );
-                ?>
-                <?php wp_get_archives( $argsMonthly ); ?>
-              </ul>
-            </div>
+          <div class="footer-archives-info">
+            <ul>
+              <?php wp_get_archives( $argsMonthly ); ?>
+            </ul>
           </div>
         </div>
           
@@ -67,13 +58,7 @@
             <hr class="header-line">
           </div>
           <div class="footer-news-info">
-            <?php $newsletterQuery = new WP_Query("category_name=newsletter");
-            while ( $newsletterQuery->have_posts() ) : $newsletterQuery->the_post(); ?>
-            
-              <h4><?php the_title(); ?></h4>
-              <?php the_content(); ?>
-          
-	          <?php endwhile; wp_reset_postdata();?>
+            <!-- News post -->
             <a class="back-top" href="#top"><i class="ion-ios-arrow-up"></i></a>
           </div>
         </div>

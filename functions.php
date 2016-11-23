@@ -44,7 +44,7 @@ function dufrio_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'dufrio' ),
+		'header' => esc_html__( 'Topo', 'dufrio' ),
 	) );
 
 	/*
@@ -89,12 +89,21 @@ function dufrio_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sidebar', 'dufrio' ),
 		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'dufrio' ),
+		'description'   => esc_html__( 'Adicione widgets aqui.', 'dufrio' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
-	) );
+	)	);
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer', 'dufrio' ),
+		'id'            => 'sidebar-2',
+		'description'   => esc_html__( 'Troque o texto do footer aqui.', 'dufrio' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	)	);
 }
 add_action( 'widgets_init', 'dufrio_widgets_init' );
 
@@ -184,3 +193,39 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Register "complementos" custom post type with "Categoria" custom taxonomy
+ */
+add_action("init", "complementosPostType");
+function complementosPostType() {
+	
+	// Registering new Custom Post Type
+	$labels_post = array( 
+		"name" => "Complementos",
+		"singular_name" => "Complemento",
+		
+	);
+	$args_post = array(
+		"labels" => $labels_post,
+		"supports" => array("title", "editor", "excerpt", "thumbnail"),
+		"menu_position" => 20,
+		"menu_icon" => "dashicons-plus",
+		"public"	=> true,
+		"show_in_menu"	=> true,
+	);
+	register_post_type("complementos", $args_post);
+	
+	// Registering new Taxonomy
+	$labels_taxonomy = array( "name" => "Categorias de Complementos", "singular_name" => "Categoria da Complementos");
+	$args_taxonomy = array(
+		"labels"	=> $labels_taxonomy,
+		"show_ui"	=> true,
+		"show_in_menu"	=> true,
+		"show_tagcloud"	=> false,
+		'show_admin_column' => true,
+		"hierarchical"	=> true,
+		"capabilities"	=> array("manage_terms", "edit_terms", "delete_terms", "assign_terms"),
+	);
+	register_taxonomy("complementos-categorias", "complementos", $args_taxonomy);
+}
