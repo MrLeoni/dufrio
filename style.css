@@ -528,10 +528,6 @@ button:active {
   padding: 50px 0 0;
 }
 
-.nav-menu .navbar {
-  min-height: 1px;
-}
-
 .nav-menu .header-line {
   margin-bottom: 0;
 }
@@ -558,42 +554,43 @@ button:active {
   display: inline-block;
 }
 
-.menu-list .menu-social-loja {
+.menu-list .dufrio-loja {
   border: 1px solid #3b7cca;
   border-radius: 3px;
-  background-color: transparent;
-  transition: 0.3s all;
   margin: 0;
+  background-color: transparent;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 
-.menu-list .menu-social-loja:hover {
+.menu-list .dufrio-loja:hover {
   background-color: #e6a005;
   border-color: #fff;
 }
 
-.menu-list .menu-social-loja a:link,
-.menu-list .menu-social-loja a:visited {
+.menu-list .dufrio-loja a:link,
+.menu-list .dufrio-loja a:visited {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 11px 10px;
+  margin: 0;
   font-size: 1em;
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
-  margin: 0;
-  padding: 8px 10px;
-  top: 0;
-  display: block;
-  width: 100%;
-  height: auto;
   color: #3b7cca;
   background-color: transparent;
-  transition: 0.3s all;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 
-.menu-list .menu-social-loja a:hover, 
-.menu-list .menu-social-loja a:active {
+.menu-list .dufrio-loja a:hover, 
+.menu-list .dufrio-loja a:active {
   color: #fff;
 }
 
-.menu-social-loja i {
+.dufrio-loja i {
   font-size: 1.2em;
   margin-right: 5px;
 }
@@ -609,97 +606,62 @@ button:active {
 
 /*--- Category Menu ---*/
 
-.categories {
-	color: transparent!important;
+.navigation-wrapper {
+  position: relative;
 }
 
-.nav-menu .navbar-default {
-  background-color:  #092f87;
-  border: 0;
-  margin-bottom: 0;
+.nav-links li {
+  display: inline-block;
+  margin: 0 10px 0 0;
 }
 
-.nav-menu .navbar-default .navbar-toggle {
-  border-color: transparent;
-  float: left;
-  margin-left: 15px;
-}
-
-.nav-menu .navbar-default .navbar-toggle:hover,
-.nav-menu .navbar-default .navbar-toggle:focus {
-  background-color: transparent;
-}
-
-.nav-menu .navbar-default .navbar-toggle .icon-bar {
-  background-color: #fff;
-}
-
-.nav-menu .navbar-collapse {
-  padding: 10px 0;
-}
-
-.navbar.navbar-default .menu-category>li {
-  margin: 0 10px;
-  text-align: center;
-}
-
-.navbar.navbar-default .menu-category li:first-child,
-.child-categories-list li:first-child {
-  padding-left: 0;
-  margin-left: 0;
-}
-
-.navbar.navbar-default .menu-category li:last-child,
-.child-categories-list li:last-child {
-  padding-right: 0;
+.nav-links li:last-child {
   margin-right: 0;
 }
 
-.navbar.navbar-default .menu-category>li>p,
-.navbar-default .navbar-nav>li>a:link,
-.navbar-default .navbar-nav>li>a:visited {
-  padding: 5px 0;
+.nav-links li a:link,
+.nav-links li a:visited {
   display: block;
-  line-height: normal;
+  width: 100%;
+  padding: 15px 0;
+  margin: 0;
   color: #fff;
   text-decoration: none;
-  transition: 0.3s all;
 }
 
-.navbar-default .navbar-nav>li>a:hover,
-.navbar-default .navbar-nav>li>a:active,
-.navbar.navbar-default .menu-category>li>p:hover {
-  cursor: pointer;
+.nav-links li.current-menu-item a:link,
+.nav-links li.current-menu-parent > a:link,
+.nav-links li.current-menu-item a:visited,
+.nav-links li.current-menu-parent > a:visited,
+.nav-links li a:hover,
+.nav-links li a:active {
   color: #3b7cca;
 }
 
-.child-category-wrapper {
+.sub-menu {
+  display: none;
+  width: 100%;
+  position: absolute;
+  bottom: -52px;
+  left: 0;
+  z-index: 999;
   background-color: #e6a005;
-  padding: 10px;
-  margin: 0;
-  display: none;
 }
 
-.child-categories-list {
-  color: #fff;
-}
-
-.child-categories-list li {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-.child-categories-list li a:link,
-.child-categories-list li a:visited,
-.child-categories-list li a:hover,
-.child-categories-list li a:active {
-  color: #fff;
+.nav-links .menu-item-has-children:hover .sub-menu {
   display: block;
-  padding: 10px 0;
 }
 
-.child-categories-list .child-cat {
-  display: none;
+ul.sub-menu li:first-child {
+  padding-left: 15.6%;
+}
+
+@media (max-width: 1280px) {
+  
+  ul.sub-menu li:first-child {
+    padding-left: 4.6%;
+  }
+  
 }
 
 /*-------------------------------
@@ -1320,6 +1282,45 @@ div.wpcf7-response-output {
     margin: 0;
   }
   
+  .nav-links li {
+    display: block;
+    max-width: 200px;
+    margin: 10px 0;
+    position: relative;
+  }
+  
+  .nav-links li a:link,
+  .nav-links li a:visited {
+    display: inline-block;
+    width: 200px;
+    padding: 10px 5px;
+  }
+  
+  .nav-links li.current-menu-item a:link,
+  .nav-links li.current-menu-parent > a:link,
+  .nav-links li.current-menu-item a:visited,
+  .nav-links li.current-menu-parent > a:visited,
+  .nav-links li a:hover,
+  .nav-links li a:active {
+    color: #fff;
+    background-color: #e6a005;
+  }
+  
+  .sub-menu {
+    bottom: initial;
+    top: 0;
+    left: 100%;
+    background-color: #a57204;
+  }
+  
+  ul.sub-menu li:first-child {
+    padding-left: 0;
+  }
+  
+  .nav-links ul.sub-menu li {
+    margin: 0;
+  }
+  
 }
 
 @media all and (max-width: 768px) {
@@ -1436,10 +1437,25 @@ div.wpcf7-response-output {
     margin-right: 0;
   }
   
-  .menu-list .menu-social-loja {
+  .menu-list .dufrio-loja {
     display: block!important;
     width: 203px;
     margin: 0 0 15px;
+  }
+  
+  .nav-links li {
+    max-width: 120px;
+  }
+  
+  .nav-links li a:link,
+  .nav-links li a:visited {
+    min-width: 120px;
+    width: auto;
+  }
+  
+  .sub-menu {
+    top: 0;
+    left: 120px;
   }
   
   /* Recent Post */
