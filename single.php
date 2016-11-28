@@ -13,25 +13,27 @@ get_header();
 	<section id="post">
 		<div class="container">
 			<div class="row">
-				<div class="row sidebar-wrapper">
-					<?php get_sidebar(); ?>
-				</div>
-				<div class="post-wrap clearfix">
-					<?php	while ( have_posts() ) : the_post(); ?>
-					
-						<div class="col-sm-9">
+				
+				<div class="col-md-9">
+					<div class="row">
+						<?php	while ( have_posts() ) : the_post(); ?>
+						<div class="col-sm-12">
 							<?php get_template_part( 'template-parts/content', get_post_format() );?>
-						</div>
-						<div class="col-sm-9">
 							<div class="tags">
 								<h2>Tags</h2>
 								<?php the_tags(" ", " ", " "); ?>
 							</div>
 						</div>
-						
-					<?php endwhile;?>
+						<?php endwhile;?>
+					</div>
 				</div>
+				
+				<div class="col-md-3">
+					<?php get_sidebar(); ?>	
+				</div>
+					
 			</div>
+			
 			<div class="row">
 				<div class="related-posts clearfix">
 					<h2 class="col-sm-12">Posts Relacionados</h2>
@@ -60,7 +62,7 @@ get_header();
 						</div>
 					
 					<?php endwhile; ?>
-					<?php wp_reset_postdata();?>
+					<?php wp_reset_postdata(); ?>
 					
 				</div>
 			</div>

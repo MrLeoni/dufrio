@@ -28,6 +28,17 @@ Its a theme for __content__ administration the capabillity for change __layout__
 
 ## Versions:
 
+#### 2.2.0 - 28/11/2016
+#### Huge theme update, focused on performance
+* Revised and improved code on severall main pages
+* Main menu re-build, now the menu is created via "Menu" administration page in WordPress painel.
+* Improved fonts and hover effects
+* Created news "Complementos" post type for handle "non-content" posts, like Newsletter Form.
+* Update and exclude files
+* Fixed bugs and improve navigation
+
+<br>
+
 #### 2.1.0 - 02/09/2016
 * Theme updated
 

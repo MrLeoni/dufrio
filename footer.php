@@ -13,6 +13,19 @@
  $argsMonthly = array(
     "show_post_count"   => 1
  );
+ 
+ // Build a query to handle the "complementos" post type.
+	// Only get posts within "Sidebar Posts" taxonomy term
+	$footer_posts_args = array(
+		"post_type"	=> "complementos",
+		"order_by"	=> "modified",
+		"tax_query"	=> array(array(
+			"taxonomy"	=> "complementos-categorias",
+			"field"	=> "slug",
+			"terms"	=> "news-footer",
+		))
+	);
+	$footer_posts = new WP_Query( $footer_posts_args );
 
 ?>
 
@@ -58,8 +71,21 @@
             <hr class="header-line">
           </div>
           <div class="footer-news-info">
-            <!-- News post -->
-            <a class="back-top" href="#top"><i class="ion-ios-arrow-up"></i></a>
+            <?php
+              while($footer_posts->have_posts()): $footer_posts->the_post(); ?>
+                <aside id="secondary" class="widget-area" role="complementary">
+                  <div class="footer-news-info">
+                    <h4><?php the_title(); ?></h4>
+                    <p><?php the_content(); ?></p>
+                  </div>
+                </aside>    
+              <?php
+              endwhile;
+              wp_reset_postdata();
+            ?>
+            <a class="back-top" href="#top">
+              <i class="fa fa-chevron-up" aria-hidden="true"></i>
+            </a>
           </div>
         </div>
         
@@ -79,11 +105,11 @@
   </footer>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="<?php bloginfo( "template_url" ); ?>/assets/js/jquery-1.11.3.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script> if(!window.jQuery) { document.write("<script src='wp-content/themes/dufrio/js/jquery-1.12.4.min.js'><\/script>"); }	</script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="<?php bloginfo( "template_url" ); ?>/assets/js/bootstrap.min.js"></script>
-	<script src="<?php bloginfo( "template_url" ); ?>/assets/js/main.js"></script>
+	<script src="<?php bloginfo( "template_url" ); ?>/js/bootstrap.min.js"></script>
+	<script src="<?php bloginfo( "template_url" ); ?>/js/main.js"></script>
 
 <?php wp_footer(); ?>
 
