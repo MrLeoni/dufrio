@@ -1,4 +1,4 @@
-# Dufrio
+# [Dufrio](http://blog.dufrio.com.br/)
 WordPress theme
 
 Creation: [Agência Delucca](http://www.agenciadelucca.com.br)
